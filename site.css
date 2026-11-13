@@ -1,37 +1,53 @@
 :root{
-  --teal:#0E7C7B;      /* primary: buttons, brand, headings */
+  --teal:#0E7C7B;       /* solid teal for buttons (same in both modes) */
+  --teal-text:#0E7C7B;  /* teal for headings/brand text; lightens in dark */
   --amber:#F2A93B;
-  --amber-dark:#D98E1E; /* accent/links on light backgrounds (contrast) */
+  --amber-dark:#D98E1E; /* link/accent colour on light backgrounds (contrast) */
   --ink:#0F1A1A;        /* body text */
   --paper:#F6F3EC;      /* warm off-white page background */
   --muted:#5b5b5b;
-  --rule:#e4ded2;       /* warm hairline to match paper */
+  --rule:#e4ded2;       /* hairline / card + header + footer borders */
+  --card-bg:#fff;
   --bg:var(--paper);
+  --link:var(--amber-dark);
   --accent:var(--amber-dark); /* legacy var name kept for inline product styles */
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --ink:#F6F3EC;
+    --paper:#0F1A1A;
+    --bg:#0F1A1A;
+    --muted:#B8C2C2;
+    --rule:#223333;       /* dark card/header/footer border */
+    --card-bg:#162424;
+    --teal-text:#3FA9A8;  /* lighter teal so text/links pass contrast on dark */
+    --link:#F2A93B;       /* amber (not dark amber) for contrast on dark */
+  }
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 header,main,footer{max-width:760px;margin:0 auto;padding:0 20px}
-header{padding-top:28px;padding-bottom:12px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-header a.brand{display:inline-flex;align-items:center;gap:10px;font-weight:700;color:var(--teal);text-decoration:none;font-size:20px}
+header{padding-top:24px;padding-bottom:24px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 16px}
+header a.brand{display:inline-flex;align-items:center;gap:10px;font-weight:700;color:var(--teal-text);text-decoration:none;font-size:1.5rem}
 header a.brand img{display:block}
-.brand-lockup{height:30px;width:auto}
-.brand-icon{height:28px;width:28px}
-nav a{color:var(--muted);text-decoration:none;margin-left:16px;font-size:15px}
-nav a:hover{color:var(--teal)}
+.logo{height:52px;width:auto}
+.brand-icon{height:44px;width:44px}
+nav a{color:var(--muted);text-decoration:none;margin-left:16px;font-size:1rem}
+nav a:first-child{margin-left:0}
+nav a:hover{color:var(--teal-text)}
 main{padding:32px 20px 48px}
-h1{font-size:30px;line-height:1.2;margin:0 0 6px;color:var(--teal)}
+h1{font-size:30px;line-height:1.2;margin:0 0 6px;color:var(--teal-text)}
 h2{font-size:21px;margin:32px 0 8px;color:var(--ink)}
-h3{margin:0 0 4px;font-size:18px;color:var(--teal)}
+h3{margin:0 0 4px;font-size:18px;color:var(--teal-text)}
 p.lede{color:var(--muted);margin-top:0}
 footer{border-top:1px solid var(--rule);padding:20px;color:var(--muted);font-size:14px}
-a{color:var(--amber-dark)}
+a{color:var(--link)}
 ul{padding-left:22px}
 li{margin:4px 0}
 .note{border-left:3px solid var(--teal);padding:8px 14px;background:rgba(14,124,123,.07);margin:16px 0}
 .btn{display:inline-block;background:var(--teal);color:#fff;text-decoration:none;padding:12px 20px;border-radius:8px;font-weight:600}
 .btn:hover{opacity:.92}
-.card{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--rule);border-radius:12px;padding:20px 22px;margin:18px 0;max-width:560px;background:#fff}
+.card{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--rule);border-radius:12px;padding:20px 22px;margin:18px 0;max-width:560px;background:var(--card-bg)}
 .card img{height:48px;width:48px;flex:none}
 .card .card-body{min-width:0}
 .card p{margin:0 0 10px;color:var(--muted)}
