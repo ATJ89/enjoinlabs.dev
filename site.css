@@ -9,7 +9,7 @@
   --rule:#e4ded2;       /* hairline / card + header + footer borders */
   --card-bg:#fff;
   --bg:var(--paper);
-  --link:var(--amber-dark);
+  --link:#0E7C7B;       /* teal: body links on paper, passes AA (amber-dark failed) */
   --accent:var(--amber-dark); /* legacy var name kept for inline product styles */
 }
 @media (prefers-color-scheme:dark){
